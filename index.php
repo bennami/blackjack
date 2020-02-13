@@ -23,6 +23,10 @@
         <div class="DealerCard"></div>
     </div>
 
+    //button to initate game
+    <form action="game.php" method="get">
+        <input type="submit" value="Play game!">
+    </form>
 </body>
 </html>
 

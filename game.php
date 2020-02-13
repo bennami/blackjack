@@ -1,7 +1,7 @@
 <?php
 class BlackJack{
 
-//property score
+//property score. This property should have the value of the player's score at all times.
  public $score = 'score';
 
 
