@@ -1,16 +1,5 @@
-<?php
-echo 'this is a blackjack game with OOP';
 
-
-
-
-
-
-
-
-
-?>
-<<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,6 +9,19 @@ echo 'this is a blackjack game with OOP';
     <title>Black Jack</title>
 </head>
 <body>
+    <h1> Black Jack</h1>
+
+    <div class="PlayerGame">
+        <p>player</p>
+        <button>HIT</button>
+        <button>STAND</button>
+        <button>SURRENDER</button>
+    </div>
+
+    <div class="PlayerGame">
+        <p>Dealer</p>
+        <div class="DealerCard"></div>
+    </div>
 
 </body>
 </html>

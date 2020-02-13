@@ -27,4 +27,5 @@ function surrender(){
 
 }
 
-$object =  new BlackJack();
+$objectDealer =  new BlackJack();
+$objectPlayer  = new BlackJack();
