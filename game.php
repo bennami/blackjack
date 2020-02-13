@@ -12,14 +12,17 @@ class BlackJack{
             $randomNumber2 = rand(1, 11);
             array_push($randomNumber, $randomNumber1, $randomNumber2);
             array_sum($randomNumber);
-            echo $this->score = implode ('<br>',$randomNumber);
-            echo $_SESSION['score']= 'your score is'.array_sum($randomNumber);
+            echo $this->score = implode (' and ',$randomNumber);
+            echo $_SESSION['score']= '<br>your score is '.array_sum($randomNumber);
         }
 
     //draws a card and adds that to session score
     function hitPlayer(){
         $randomNumber = rand(1, 11);
-        echo $_SESSION['score'] += $randomNumber;
+
+        echo $_SESSION['score'] = $_SESSION['score'] +$randomNumber;
+
+
     }
         /*if (array_sum(explode('  ', $randomNumber)) <= 21){
            echo $this->score = 'BLACK JACK';
@@ -43,7 +46,9 @@ if (isset($_GET['start'])) {
     //$player->hit();
         //refresh page to start game
         if (isset($_POST['hit'])) {
-         echo $player->hitPlayer();
+            if(isset($_SESSION['score'])){
+                echo $player->hitPlayer();
+            }
         } else{
             echo$player->hit();
         }
