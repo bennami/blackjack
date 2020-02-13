@@ -20,18 +20,15 @@ include 'game.php';
 
     <div class="PlayerGame">
         <p>player</p>
-        <div class="card"><?php  echo $score; ?></div>
-        <div class="card"><?php  echo $score; ?></div>
-        <button type='submit' name="hit" value="1" >HIT</button>
-        <button type='submit' name="stand" value="2">STAND</button>
-        <button type='submit' name="surrender" value="3">SURRENDER</button>
+        <div class="score"><?php  //echo  hitPlayer(); ?></div>
     </div>
+    <button type='submit' name="hit" value="1" >HIT</button>
+    <button type='submit' name="stand" value="2">STAND</button>
+    <button type='submit' name="surrender" value="3">SURRENDER</button>
 
     <div class="PlayerGame">
         <p>Dealer</p>
-        <div class="card"><?php  $dscore; ?></div>
-        <div class="card"><?php  $dscore; ?></div>
-        <div class="DealerCard"></div>
+        <div class="score"> </div>
     </div>
 </form>
     <!--button to initate game-->
