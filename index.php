@@ -3,6 +3,7 @@ ini_set('display_errors', "1");
 ini_set('display_startup_errors', "1");
 error_reporting(E_ALL);
 include 'game.php';
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -14,35 +15,28 @@ include 'game.php';
     <title>Black Jack</title>
 </head>
 <body>
+<form  method="post">
     <h1> Black Jack</h1>
 
     <div class="PlayerGame">
         <p>player</p>
-        <div class="card"><?php $player = new BlackJack();
-            $player->hit();
-            echo $player->card?></div>
-        <div class="card"><?php $player = new BlackJack();
-            $player->hit();
-            echo $player->card?></div>
-        <button>HIT</button>
-        <button>STAND</button>
-        <button>SURRENDER</button>
+        <div class="card"><?php  echo $score; ?></div>
+        <div class="card"><?php  echo $score; ?></div>
+        <button type='submit' name="hit" value="1" >HIT</button>
+        <button type='submit' name="stand" value="2">STAND</button>
+        <button type='submit' name="surrender" value="3">SURRENDER</button>
     </div>
 
     <div class="PlayerGame">
         <p>Dealer</p>
-        <div class="card"><?php $player = new BlackJack();
-            $player->hit();
-            echo $player->card?></div>
-        <div class="card"><?php $player = new BlackJack();
-            $player->hit();
-            echo $player->card?></div>
+        <div class="card"><?php  $dscore; ?></div>
+        <div class="card"><?php  $dscore; ?></div>
         <div class="DealerCard"></div>
     </div>
-
+</form>
     <!--button to initate game-->
-    <form action="game.php" method="get">
-        <input type="submit" value="Play game!">
+    <form action=" " method="get">
+        <button type="submit" value="4" name="start">start game</button>
     </form>
 </body>
 </html>
