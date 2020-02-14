@@ -6,19 +6,20 @@ class BlackJack{
     public $score = 0;
     public $dealerScore =0;
     public $disable = '';
-
+    public $whoIsPlaying='';
 
     //hit adds 2 cards between 1 and 11 and puts the score in the session
-    function startGame(){
+    function startGame($whoIsPlaying){
+
         $randomNumber = array();
         $randomNumber1 = rand(1, 11);
         $randomNumber2 = rand(1, 11);
         array_push($randomNumber, $randomNumber1, $randomNumber2);
         array_sum($randomNumber);
-         $this->score = implode (' and ',$randomNumber);
+        $this->score = implode (' and ',$randomNumber);
         $_SESSION['score']= array_sum($randomNumber);
-       // $this->score = array_sum(($randomNumber));
-        echo '<br>your score is '.$_SESSION['score'];
+        // $this->score = array_sum(($randomNumber));
+        echo $whoIsPlaying.' score is '.$_SESSION['score'];
 
     }
 
@@ -31,9 +32,6 @@ class BlackJack{
 
     }
 
-    /*if (array_sum(explode('  ', $randomNumber)) <= 21){
-       echo $this->score = 'BLACK JACK';
-    }*/
 
     // stand should end your turn and start the dealer's turn. (Your point total is saved.)
     function stand(){
@@ -43,19 +41,19 @@ class BlackJack{
         array_push($randomNumber, $randomNumber1, $randomNumber2);
         array_sum($randomNumber);
         echo $this->dealerScore = implode (' and ',$randomNumber);
-        $_SESSION['score']= array_sum($randomNumber);
+        $_SESSION['scoreDealer']= array_sum($randomNumber);
         // $this->score = array_sum(($randomNumber));
         echo '<br>dealer score is '.$_SESSION['score'];
 
-        while($_SESSION['score']<21){
+        while($_SESSION['scoreDealer']<15){
             $randomCard = rand(1, 11);
             echo '<br> dealer draws card: '.$randomCard;
             $_SESSION['score'] +=  $randomCard;
-            if($_SESSION['score']>21){
+            if($_SESSION['scoreDealer']>21){
                 echo  '<br> dealer score is:'.$_SESSION['score'];
                 echo 'Dealer loses';
                 break;
-            }elseif($_SESSION['score']>21){
+            }elseif($_SESSION['scoreDealer']>21){
                 echo 'BLACKJACK, dealer wins';
                 break;
             }else{
@@ -70,6 +68,5 @@ class BlackJack{
     //Surrender should make you surrender the game. (Dealer wins.)
     function surrender(){
         echo 'LOSER, dealer wins';
-
     }
 }

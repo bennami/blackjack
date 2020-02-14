@@ -8,7 +8,7 @@ $dealer = new BlackJack();
 
 if (isset($_POST['start'])) {
 
-         $player->startGame();
+         $player->startGame('your');
     }
 
 if (isset($_POST['hit'])) {
@@ -20,23 +20,37 @@ if (isset($_POST['hit'])) {
      echo '<br> you lose';
         $player->disable = 'disabled';
  }elseif ($_SESSION['score'] == 21){
-     echo '<br>BLACKJACK';
+    $blackjack ='<br>BLACKJACK';
  }
 
 }
 
 if(isset($_POST['stand'])){
-    $dealer->stand();
-    if($dealer->dealerScore >21){
+    $dealer->startGame('dealer');
+    if($dealer->dealerScore > 21){
         echo '<br>Dealer Loses';
     }
-    //$dealer->hitPlayer();
+    while($_SESSION['score']<15) {
+        $randomCard = rand(1, 11);
+        echo '<br> dealer draws card: ' . $randomCard;
+        $_SESSION['score'] += $randomCard;
+        if ($_SESSION['score'] > 15) {
+            echo '<br> dealer score is:' . $_SESSION['score'];
+            echo 'Dealer loses';
+            break;
+        } elseif ($_SESSION['score'] == 21) {
+            echo 'BLACKJACK, dealer wins';
+            break;
+        } else {
+            echo 'dealer score is' . $_SESSION['score'] += $randomCard;;
+        }
+    }
 
 }
 
 if(isset($_POST['surrender'])){
-    echo 'loser<br>';
-    $dealer->stand();
+
+    $dealer->surrender();
     if($dealer->dealerScore >21){
         echo '<br>Dealer Loses';
     }

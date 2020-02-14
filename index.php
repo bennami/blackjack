@@ -20,6 +20,8 @@ require 'game.php';
 
     <div class="PlayerGame">
         <p>player</p>
+        <p><?php /*echo $player->card1*/ ?></p>
+        <p><?php /*echo $player->card2 */?></p>
         <div class="score"><?php  echo $player->score ?></div>
     </div>
     <button type='submit' name="hit" value="1" <?php echo $player->disable ?> >HIT</button>
