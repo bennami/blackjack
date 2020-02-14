@@ -10,19 +10,24 @@ class BlackJack{
     public $randomNumber1=0;
     public $randomNumber2=0;
 
+    //constructor
+
+    function __construct($player) {
+        $this->whoIsPlaying = $player;
+    }
     //hit adds 2 cards between 1 and 11 and puts the score in the session
     function startGame($whoIsPlaying){
 
         $randomNumber = array();
         $this->randomNumber1 = rand(1, 11);
         $this->randomNumber2 = rand(1, 11);
-        array_push($randomNumber, $randomNumber1, $randomNumber2);
+        array_push($randomNumber, $this->randomNumber1,  $this->randomNumber2);
         array_sum($randomNumber);
         $this->score = implode (' and ',$randomNumber);
         $_SESSION['score']= array_sum($randomNumber);
         // $this->score = array_sum(($randomNumber));
         echo $whoIsPlaying.' score is '.$_SESSION['score'];
-
+return $whoIsPlaying;
     }
 
     //draws a card and adds that to session score
@@ -30,7 +35,7 @@ class BlackJack{
         $rand = rand(1, 11);
         echo '<br>'.$rand;
         $_SESSION['score'] +=  $rand;
-        echo 'your score is'. $_SESSION['score'];
+        echo ',your score is'. $_SESSION['score'];
 
     }
 

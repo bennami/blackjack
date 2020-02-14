@@ -3,17 +3,16 @@ require ('blackjack.php');
 
 
 //instantiate two objects
-$player = new BlackJack();
-$dealer = new BlackJack();
+$player = new BlackJack('player');
+$dealer = new BlackJack('dealer');
 
 if (isset($_POST['start'])) {
 
-         $player->startGame('your');
+         $player->startGame('player');
     }
 
 if (isset($_POST['hit'])) {
-
- $player->hitPlayer();
+    $player->hitPlayer();
 
  if($_SESSION['score'] >21){
 
@@ -27,6 +26,7 @@ if (isset($_POST['hit'])) {
 
 if(isset($_POST['stand'])){
     $dealer->startGame('dealer');
+
     if($dealer->dealerScore > 21){
         echo '<br>Dealer Loses';
     }

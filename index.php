@@ -20,6 +20,8 @@ require 'game.php';
 
     <div class="PlayerGame">
         <p><?php echo $player->whoIsPlaying; ?></p>
+        <p><?php echo $dealer->whoIsPlaying; ?></p>
+
         <p><?php echo $player->randomNumber1 ?></p>
         <p><?php echo $player->randomNumber2 ?></p>
         <div class="score"><?php  echo $_SESSION['score']?></div>
