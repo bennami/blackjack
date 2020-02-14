@@ -6,14 +6,16 @@ class BlackJack{
     public $score = 0;
     public $dealerScore =0;
     public $disable = '';
-    public $whoIsPlaying='';
+    public $whoIsPlaying='imane';
+    public $randomNumber1=0;
+    public $randomNumber2=0;
 
     //hit adds 2 cards between 1 and 11 and puts the score in the session
     function startGame($whoIsPlaying){
 
         $randomNumber = array();
-        $randomNumber1 = rand(1, 11);
-        $randomNumber2 = rand(1, 11);
+        $this->randomNumber1 = rand(1, 11);
+        $this->randomNumber2 = rand(1, 11);
         array_push($randomNumber, $randomNumber1, $randomNumber2);
         array_sum($randomNumber);
         $this->score = implode (' and ',$randomNumber);
@@ -54,5 +56,9 @@ class BlackJack{
     //Surrender should make you surrender the game. (Dealer wins.)
     function surrender(){
         echo 'LOSER, dealer wins';
+    }
+
+    function whoAmI(){
+        return $this->whoIsPlaying;
     }
 }

@@ -19,10 +19,10 @@ require 'game.php';
     <h1> Blackjack</h1>
 
     <div class="PlayerGame">
-        <p>player</p>
-        <p><?php /*echo $player->card1*/ ?></p>
-        <p><?php /*echo $player->card2 */?></p>
-        <div class="score"><?php  echo $player->score ?></div>
+        <p><?php echo $player->whoIsPlaying; ?></p>
+        <p><?php echo $player->randomNumber1 ?></p>
+        <p><?php echo $player->randomNumber2 ?></p>
+        <div class="score"><?php  echo $_SESSION['score']?></div>
     </div>
     <button type='submit' name="hit" value="1" <?php echo $player->disable ?> >HIT</button>
     <button type='submit' name="stand" value="2" <?php echo $player->disable ?>>STAND</button>
