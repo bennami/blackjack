@@ -9,7 +9,6 @@ $dealer = new BlackJack();
 if (isset($_POST['start'])) {
 
          $player->startGame();
-
     }
 
 
@@ -17,6 +16,11 @@ if (isset($_POST['start'])) {
 if (isset($_POST['hit'])) {
 
  $player->hitPlayer();
+
+ if($_SESSION['score'] >21){
+
+     echo 'you lose';
+ }
 
 }
 

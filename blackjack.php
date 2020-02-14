@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 class BlackJack{
     //property score. This property should have the value of the player's score at all times.
     public $score = 0;
