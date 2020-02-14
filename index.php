@@ -16,15 +16,15 @@ require 'game.php';
 </head>
 <body>
 <form  method="post">
-    <h1> Black Jack</h1>
+    <h1> Blackjack</h1>
 
     <div class="PlayerGame">
         <p>player</p>
-        <div class="score"><?php  //echo  hitPlayer(); ?></div>
+        <div class="score"><?php  echo $player->score ?></div>
     </div>
-    <button type='submit' name="hit" value="1" >HIT</button>
-    <button type='submit' name="stand" value="2">STAND</button>
-    <button type='submit' name="surrender" value="3">SURRENDER</button>
+    <button type='submit' name="hit" value="1" <?php echo $player->disable ?> >HIT</button>
+    <button type='submit' name="stand" value="2" <?php echo $player->disable ?>>STAND</button>
+    <button type='submit' name="surrender" value="3" <?php echo $player->disable ?>>SURRENDER</button>
 
     <div class="PlayerGame">
         <p>Dealer</p>

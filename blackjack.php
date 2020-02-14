@@ -5,6 +5,8 @@ class BlackJack{
     //property score. This property should have the value of the player's score at all times.
     public $score = 0;
     public $dealerScore =0;
+    public $disable = '';
+
 
     //hit adds 2 cards between 1 and 11 and puts the score in the session
     function startGame(){
@@ -13,7 +15,7 @@ class BlackJack{
         $randomNumber2 = rand(1, 11);
         array_push($randomNumber, $randomNumber1, $randomNumber2);
         array_sum($randomNumber);
-        echo $this->score = implode (' and ',$randomNumber);
+         $this->score = implode (' and ',$randomNumber);
         $_SESSION['score']= array_sum($randomNumber);
        // $this->score = array_sum(($randomNumber));
         echo '<br>your score is '.$_SESSION['score'];
@@ -43,18 +45,21 @@ class BlackJack{
         echo $this->dealerScore = implode (' and ',$randomNumber);
         $_SESSION['score']= array_sum($randomNumber);
         // $this->score = array_sum(($randomNumber));
-        echo '<br>your score is '.$_SESSION['score'];
+        echo '<br>dealer score is '.$_SESSION['score'];
 
         while($_SESSION['score']<21){
             $randomCard = rand(1, 11);
-            echo '<br>'.$randomCard;
+            echo '<br> dealer draws card: '.$randomCard;
             $_SESSION['score'] +=  $randomCard;
             if($_SESSION['score']>21){
+                echo  '<br> dealer score is:'.$_SESSION['score'];
                 echo 'Dealer loses';
+                break;
             }elseif($_SESSION['score']>21){
-                echo 'BLACKJACK';
+                echo 'BLACKJACK, dealer wins';
+                break;
             }else{
-                echo 'your score is'.$_SESSION['score'] +=  $randomCard;;
+                echo 'dealer score is'.$_SESSION['score'] +=  $randomCard;;
             }
 
 
@@ -64,6 +69,7 @@ class BlackJack{
 
     //Surrender should make you surrender the game. (Dealer wins.)
     function surrender(){
-        echo 'LOSER';
+        echo 'LOSER, dealer wins';
+
     }
 }

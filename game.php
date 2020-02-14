@@ -11,16 +11,16 @@ if (isset($_POST['start'])) {
          $player->startGame();
     }
 
-
-
 if (isset($_POST['hit'])) {
 
  $player->hitPlayer();
 
  if($_SESSION['score'] >21){
+
      echo '<br> you lose';
+        $player->disable = 'disabled';
  }elseif ($_SESSION['score'] == 21){
-     echo 'BLACKJACK';
+     echo '<br>BLACKJACK';
  }
 
 }
@@ -28,11 +28,24 @@ if (isset($_POST['hit'])) {
 if(isset($_POST['stand'])){
     $dealer->stand();
     if($dealer->dealerScore >21){
-        echo 'Dealer Loses';
+        echo '<br>Dealer Loses';
     }
     //$dealer->hitPlayer();
 
 }
+
+if(isset($_POST['surrender'])){
+    echo 'loser<br>';
+    $dealer->stand();
+    if($dealer->dealerScore >21){
+        echo '<br>Dealer Loses';
+    }
+
+    //$dealer->hitPlayer();
+
+}
+
+
 
 
 
