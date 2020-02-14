@@ -35,33 +35,19 @@ class BlackJack{
 
     // stand should end your turn and start the dealer's turn. (Your point total is saved.)
     function stand(){
-        $randomNumber = array();
-        $randomNumber1 = rand(1, 11);
-        $randomNumber2 = rand(1, 11);
-        array_push($randomNumber, $randomNumber1, $randomNumber2);
-        array_sum($randomNumber);
-        echo $this->dealerScore = implode (' and ',$randomNumber);
-        $_SESSION['scoreDealer']= array_sum($randomNumber);
-        // $this->score = array_sum(($randomNumber));
-        echo '<br>dealer score is '.$_SESSION['score'];
 
-        while($_SESSION['scoreDealer']<15){
-            $randomCard = rand(1, 11);
-            echo '<br> dealer draws card: '.$randomCard;
-            $_SESSION['score'] +=  $randomCard;
-            if($_SESSION['scoreDealer']>21){
-                echo  '<br> dealer score is:'.$_SESSION['score'];
-                echo 'Dealer loses';
-                break;
-            }elseif($_SESSION['scoreDealer']>21){
-                echo 'BLACKJACK, dealer wins';
-                break;
-            }else{
-                echo 'dealer score is'.$_SESSION['score'] +=  $randomCard;;
-            }
-
-
-
+        $randomCard = rand(1, 11);
+        echo '<br> dealer draws card: ' . $randomCard;
+        $_SESSION['score'] += $randomCard;
+        if ($_SESSION['score'] > 15) {
+            echo '<br> dealer score is:' . $_SESSION['score'];
+            echo 'Dealer loses';
+            //break;
+        } elseif ($_SESSION['score'] == 21) {
+            echo 'BLACKJACK, dealer wins';
+           // break;
+        } else {
+            echo 'dealer score is' . $_SESSION['score'] += $randomCard;;
         }
     }
 

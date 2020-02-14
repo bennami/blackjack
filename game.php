@@ -31,19 +31,7 @@ if(isset($_POST['stand'])){
         echo '<br>Dealer Loses';
     }
     while($_SESSION['score']<15) {
-        $randomCard = rand(1, 11);
-        echo '<br> dealer draws card: ' . $randomCard;
-        $_SESSION['score'] += $randomCard;
-        if ($_SESSION['score'] > 15) {
-            echo '<br> dealer score is:' . $_SESSION['score'];
-            echo 'Dealer loses';
-            break;
-        } elseif ($_SESSION['score'] == 21) {
-            echo 'BLACKJACK, dealer wins';
-            break;
-        } else {
-            echo 'dealer score is' . $_SESSION['score'] += $randomCard;;
-        }
+    $dealer->stand();
     }
 
 }
