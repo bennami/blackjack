@@ -2,7 +2,7 @@
 ini_set('display_errors', "1");
 ini_set('display_startup_errors', "1");
 error_reporting(E_ALL);
-include 'game.php';
+require 'game.php';
 
 ?>
 <!doctype html>
@@ -30,9 +30,9 @@ include 'game.php';
         <p>Dealer</p>
         <div class="score"> </div>
     </div>
-</form>
+
     <!--button to initate game-->
-    <form action=" " method="get">
+
         <button type="submit" value="4" name="start">start game</button>
     </form>
 </body>
