@@ -1,21 +1,27 @@
 *{
     margin: 0;
     padding: 0;
+    color: #ede9eb;
+}
+body{
+    background-color: black;
 }
 .cards{
     display: grid;
-    grid-template-columns: 1fr  1fr 1fr;
+    grid-template-columns: 1fr  1fr ;
     grid-template-rows: 1fr;
-    grid-column-gap: 7vw;
-align-self: center;
+    grid-column-gap: 10px;
+   /* //align-self: center;*/
     justify-content: center;
+    margin: auto;
+    width: 80%;
 }
 .card{
     width: 80px;
     height: 120px;
     border-radius: 5px;
     color: black;
-    background-color: cornflowerblue;
+    background-color: #ede9eb;
     font-size: 7vh;
     text-align: center;
     padding: 10px;
@@ -29,4 +35,12 @@ align-self: center;
 #card1{
     grid-column: 2/3;
     grid-row: 1/2;
+}
+
+button{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border: darkslateblue 2px solid;
+    background-color: darkslateblue;
 }

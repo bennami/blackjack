@@ -27,10 +27,11 @@ require 'game.php';
         <section class="cards">
         <p  class="card" id="card1"><?php echo $player->randomNumber1 ?></p>
         <p class="card" id="card2"><?php echo $player->randomNumber2 ?></p>
+            <p><?php echo $player->blackjack ?></p>
         </section>
         <div class="score"><?php  echo'your score is '. $player->score?></div>
 
-        <p><?php echo $player->hit ?></p>
+        <p class ='card'><?php echo $player->hit ?></p>
 
 
 

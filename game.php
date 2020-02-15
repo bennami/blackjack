@@ -19,14 +19,13 @@ if (isset($_POST['start'])) {
 }
 
 if (isset($_POST['hit'])) {
-    $player->hitPlayer();
+ $player->hitPlayer();
 
- if($_SESSION['score'] >21){
-
+ if($player->score > 21){
      echo '<br> you lose';
-        $player->disable = 'disabled';
- }elseif ($_SESSION['score'] == 21){
-    $blackjack ='<br>BLACKJACK';
+     $player->disable = 'disabled';
+ }elseif ($player->score == 21){
+    echo $player->blackjack = 'BLACKJACK';
  }
 
 }else{
