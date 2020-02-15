@@ -28,19 +28,19 @@ class BlackJack{
         array_sum($randomNumber);
 
         //put the sum in the score, score will equal the session score
-        $_SESSION['score']= array_sum($randomNumber);
-        $this->score= $_SESSION['score'];
+        $_SESSION[$whoIsPlaying]= array_sum($randomNumber);
+        $this->score= $_SESSION[$whoIsPlaying];
         echo $whoIsPlaying.' score is '.$this->score;
 
     }
 
     //draws a card and adds that to session score
-    function hitPlayer(){
+    function hitPlayer($whoIsPlaying){
         $this->hit  = rand(1, 11);
         echo '<br>'.$this->hit;
 
         // add hit card to score
-        $this->score= $_SESSION['score'];
+        $this->score= $_SESSION[$whoIsPlaying];
         $this->score += $this->hit;
         echo ',your score is'. $this->score;
 
@@ -48,20 +48,22 @@ class BlackJack{
 
 
     // stand should end your turn and start the dealer's turn. (Your point total is saved.)
-    function stand(){
-
+    function stand($whoisplaying){
+        $this->hit  = rand(1, 11);
         echo '<br> dealer draws card: ' . $this->hit;
-        $_SESSION['score'] += $this->hit;
+       $this->score = $_SESSION[$whoisplaying];
+        $_SESSION[$whoisplaying] += $this->hit;
 
-        if ($_SESSION['score'] > 15) {
-            echo '<br> dealer score is:' . $_SESSION['score'];
+
+        if ($_SESSION[$whoisplaying] > 15) {
+            echo '<br> dealer score is:' . $_SESSION[$whoisplaying];
             echo 'Dealer loses';
 
-        } elseif ($_SESSION['score'] == 21) {
+        } elseif ($_SESSION[$whoisplaying] == 21) {
             echo 'BLACKJACK, dealer wins';
 
         } else {
-            echo 'dealer score is' . $_SESSION['score'] += $this->hit;;
+            echo 'dealer score is' . $_SESSION[$whoisplaying] += $this->hit;;
         }
     }
 

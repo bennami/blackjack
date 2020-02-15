@@ -20,30 +20,29 @@ require 'game.php';
     <h1> Blackjack</h1>
 
     <div class="PlayerGame">
-
         <!--button to initiate game-->
         <button type="submit" value="4" name="start">start game</button>
+
         <p class="player"><?php echo $player->whoIsPlaying; ?></p>
+
         <section class="cards">
         <p  class="card" id="card1"><?php echo $player->randomNumber1 ?></p>
         <p class="card" id="card2"><?php echo $player->randomNumber2 ?></p>
             <p><?php echo $player->blackjack ?></p>
         </section>
+
         <div class="score"><?php  echo'your score is '. $player->score?></div>
 
         <p class ='card'><?php echo $player->hit ?></p>
 
-
-
-
-
     </div>
-    <button type='submit' name="hit" value="1" <?php echo $player->disable ?> >HIT</button>
-    <button type='submit' name="stand" value="2" <?php echo $player->disable ?>>STAND</button>
-    <button type='submit' name="surrender" value="3" <?php echo $player->disable ?>>SURRENDER</button>
+    <button type='submit' name="hit" value="1" style="display:<?php echo $player->disable ?> "  >HIT</button>
+    <button type='submit' name="stand" value="2"  style="display:<?php echo $player->disable ?>">STAND</button>
+    <button type='submit' name="surrender" value="3" style="display:<?php echo $player->disable ?>">SURRENDER</button>
 
     <div class="DealerGame">
         <p class="player"><?php echo $dealer->whoIsPlaying; ?></p>
+        <p class dealer><?php echo $dealer->stand(); ?></p>
         <div class="score"> </div>
     </div>
 

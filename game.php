@@ -19,27 +19,27 @@ if (isset($_POST['start'])) {
 }
 
 if (isset($_POST['hit'])) {
- $player->hitPlayer();
+ $player->hitPlayer('player');
 
- if($player->score > 21){
-     echo '<br> you lose';
-     $player->disable = 'disabled';
- }elseif ($player->score == 21){
-    echo $player->blackjack = 'BLACKJACK';
- }
+    if($player->score >21){
+        echo 'you lose';
+        $player->disable = 'none';
+    }elseif ($player->score == 21){
+         $player->blackjack ='<BLACKJACK';
+    }
 
 }else{
-    $player->hit='hit me!';
+ $player->hit='hit me!';
 }
 
 if(isset($_POST['stand'])){
     $dealer->startGame('dealer');
 
-    if($dealer->dealerScore > 21){
+    if($dealer->score > 21){
         echo '<br>Dealer Loses';
     }
-    while($_SESSION['score']<15) {
-    $dealer->stand();
+    while($dealer->score < 15) {
+    $dealer->stand('dealer');
     }
 
 }
@@ -47,11 +47,6 @@ if(isset($_POST['stand'])){
 if(isset($_POST['surrender'])){
 
     $dealer->surrender();
-    if($dealer->dealerScore >21){
-        echo '<br>Dealer Loses';
-    }
-
-    //$dealer->hitPlayer();
 
 }
 
