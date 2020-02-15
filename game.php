@@ -8,8 +8,15 @@ $dealer = new BlackJack('dealer');
 
 if (isset($_POST['start'])) {
 
-         $player->startGame('player');
-    }
+   $player->startGame('player');
+}else{
+    $player->whoIsPlaying = '';
+    $dealer->whoIsPlaying = '';
+    $player->randomNumber2='';
+    $player->randomNumber1='';
+    $player->score = '' ;
+   $player->hit='start the game!';
+}
 
 if (isset($_POST['hit'])) {
     $player->hitPlayer();
@@ -22,6 +29,8 @@ if (isset($_POST['hit'])) {
     $blackjack ='<br>BLACKJACK';
  }
 
+}else{
+    $player->hit='hit me!';
 }
 
 if(isset($_POST['stand'])){

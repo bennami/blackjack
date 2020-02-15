@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.cards{
+    display: grid;
+    grid-template-columns: 1fr  1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 7vw;
+align-self: center;
+    justify-content: center;
+}
+.card{
+    width: 80px;
+    height: 120px;
+    border-radius: 5px;
+    color: black;
+    background-color: cornflowerblue;
+    font-size: 7vh;
+    text-align: center;
+    padding: 10px;
+
+}
+
+#card1{
+     grid-column: 1/2;
+     grid-row: 1/2;
+ }
+#card1{
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
