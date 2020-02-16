@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     color: #ede9eb;
+    font-family: sans-serif;
 }
 body{
     background-color: black;
@@ -48,3 +49,14 @@ button{
     border: darkslateblue 2px solid;
     background-color: darkslateblue;
 }
+h1{
+    padding: 3vmax;
+    font-size: 7rem;
+}
+
+
+button{
+    padding: 5px;
+
+}
+

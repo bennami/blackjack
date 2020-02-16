@@ -23,7 +23,7 @@ if (isset($_POST['hit'])) {
     $player->hit('player');
 
     if ($_SESSION['player'] > 21) {
-       echo  $player->loser = 'you lose';
+       echo  $player->loser = '<br> YOU LOSE';
         $player->disable = 'none';
     } elseif ($_SESSION['player'] == 21) {
        echo  $player->blackjack = 'BLACKJACK';
@@ -36,7 +36,7 @@ if (isset($_POST['hit'])) {
 if (isset($_POST['stand'])) {
     $dealer->startGame('dealer');
     do{
-        $dealer->stand('dealer');
+        $dealer->stand();
     }while($_SESSION['dealer'] < 21);
 
     if ($_SESSION['dealer'] > 21) {

@@ -28,18 +28,18 @@ class BlackJack{
         //put the sum in the score, score will equal the session score
         $_SESSION[$whoIsPlaying]= $this->score;
         $this->score = $_SESSION[$whoIsPlaying];
-        echo $whoIsPlaying.' score is '.$this->score;
+        $whoIsPlaying.' score is '.$this->score;
 
     }
 
     //draws a card and adds that to session score
     function hit($whoIsPlaying){
         $this->hit  = rand(1, 11);
-        echo '<br>'.$whoIsPlaying.' hits with '.$this->hit;
+        //echo '<br>'.$whoIsPlaying.' hits with '.$this->hit;
         // add hit card to score
         $this->score = $_SESSION[$whoIsPlaying];
         $_SESSION[$whoIsPlaying] += $this->hit;
-        echo '<br>'.$whoIsPlaying.' score is '. $_SESSION[$whoIsPlaying];
+       // echo '<br>'.$whoIsPlaying.' score is '. $_SESSION[$whoIsPlaying];
 
     }
 

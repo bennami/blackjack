@@ -30,10 +30,13 @@ require 'game.php';
         <p class="card" id="card2"><?php if (isset($player)){ echo $player->card2;} ?></p>
         <p class ='card' id="card3"><?php if(isset($player)){ echo $player->hit;} ?></p>
 
-        <p><?php  if (isset($player)){echo 'your score is'.$_SESSION['player']; }?></p>
+        <p><?php  if (isset($player)){echo 'your score is '.$_SESSION['player']; }?></p>
         </section>
 
-         <div class="loser"><?php echo $player->loser; ?></div>
+         <p class="loser"><?php if (isset($player)){ echo $player->loser;} ?></p>
+
+        <p class="loser"><?php if (isset($player)){ echo $player->blackjack;} ?></p>
+
 
     </div>
     <button type='submit' name="hit" value="1" style="display:<?php  if (isset($player)){  echo $player->disable; }?> "  >HIT</button>
