@@ -23,26 +23,28 @@ require 'game.php';
         <!--button to initiate game-->
         <button type="submit" value="4" name="start">start game</button>
 
-        <p class="player"><?php echo $player->whoIsPlaying; ?></p>
+        <p class="player"><?php if (isset($player)) {
+                echo $player->whoIsPlaying;
+            } ?></p>
 
         <section class="cards">
-        <p  class="card" id="card1"><?php echo $player->randomNumber1 ?></p>
-        <p class="card" id="card2"><?php echo $player->randomNumber2 ?></p>
-            <p><?php echo $player->blackjack ?></p>
+        <p  class="card" id="card1"><?php if (isset($player)){ echo $player->card1;} ?></p>
+        <p class="card" id="card2"><?php if (isset($player)){ echo $player->card2;} ?></p>
+            <p><?php  if (isset($player)){echo $player->blackjack; }?></p>
         </section>
 
-        <div class="score"><?php  echo'your score is '. $player->score?></div>
+        <div class="score"><?php if(isset($theScore)){ echo $theScore;}?></div>
 
-        <p class ='card'><?php echo $player->hit ?></p>
+        <p class ='card'>HIT<?php if(isset($theScore)){ echo $player->hit;} ?></p>
 
     </div>
-    <button type='submit' name="hit" value="1" style="display:<?php echo $player->disable ?> "  >HIT</button>
-    <button type='submit' name="stand" value="2"  style="display:<?php echo $player->disable ?>">STAND</button>
-    <button type='submit' name="surrender" value="3" style="display:<?php echo $player->disable ?>">SURRENDER</button>
+    <button type='submit' name="hit" value="1" style="display:<?php  if (isset($player)){  echo $player->disable; }?> "  >HIT</button>
+    <button type='submit' name="stand" value="2"  style="display:<?php  if (isset($player)){ echo $player->disable;} ?>">STAND</button>
+    <button type='submit' name="surrender" value="3" style="display:<?php  if (isset($player)){ echo $player->disable; }?>">SURRENDER</button>
 
     <div class="DealerGame">
-        <p class="player"><?php echo $dealer->whoIsPlaying; ?></p>
-        <p class dealer><?php echo $dealer->stand(); ?></p>
+        <p class="player"><?php    ?></p>
+        <p class dealer><?php   ?></p>
         <div class="score"> </div>
     </div>
 

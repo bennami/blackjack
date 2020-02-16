@@ -4,32 +4,29 @@ session_start();
 class BlackJack{
     //property score. This property should have the value of the player's score at all times.
     public $score = 0;
-    public $dealerScore =0;
     public $disable = '';
     public $whoIsPlaying=' ';
-    public $randomNumber1 = 0;
-    public $randomNumber2 = 0;
+    public $card1 = 0;
+    public $card2 = 0;
     public $hit = 0;
     public $blackjack = '';
+    public $loser;
+    public $sum = array();
 
     //constructor
     function __construct($player) {
         $this->whoIsPlaying = $player;
-        $this->randomNumber1 = rand(1, 11);
-        $this->randomNumber2 = rand(1, 11);
-
+        $this->card1 = rand(1, 11);
+        $this->card2 = rand(1, 11);
+        array_push($this->sum, $this->card1, $this->card2);
+        $this->score = array_sum($this->sum);
     }
 
-    //hit adds 2 cards between 1 and 11 and puts the score in the session
-    function startGame($whoIsPlaying){
-        //push two random numbers in array and get the sum
-        $randomNumber = array();
-        array_push($randomNumber, $this->randomNumber1,  $this->randomNumber2);
-        array_sum($randomNumber);
 
+    function startGame($whoIsPlaying){
         //put the sum in the score, score will equal the session score
-        $_SESSION[$whoIsPlaying]= array_sum($randomNumber);
-        $this->score= $_SESSION[$whoIsPlaying];
+        $_SESSION[$whoIsPlaying]= $this->score;
+        $this->score = $_SESSION[$whoIsPlaying];
         echo $whoIsPlaying.' score is '.$this->score;
 
     }
@@ -37,12 +34,11 @@ class BlackJack{
     //draws a card and adds that to session score
     function hitPlayer($whoIsPlaying){
         $this->hit  = rand(1, 11);
-        echo '<br>'.$this->hit;
-
+        echo '<br> player hits with '.$this->hit;
         // add hit card to score
-        $this->score= $_SESSION[$whoIsPlaying];
-        $this->score += $this->hit;
-        echo ',your score is'. $this->score;
+        $this->score = $_SESSION[$whoIsPlaying];
+        $_SESSION[$whoIsPlaying] += $this->hit;
+        echo '<br> your score is '. $_SESSION[$whoIsPlaying];
 
     }
 
@@ -51,20 +47,10 @@ class BlackJack{
     function stand($whoisplaying){
         $this->hit  = rand(1, 11);
         echo '<br> dealer draws card: ' . $this->hit;
-       $this->score = $_SESSION[$whoisplaying];
+        $this->score = $_SESSION[$whoisplaying];
         $_SESSION[$whoisplaying] += $this->hit;
 
 
-        if ($_SESSION[$whoisplaying] > 15) {
-            echo '<br> dealer score is:' . $_SESSION[$whoisplaying];
-            echo 'Dealer loses';
-
-        } elseif ($_SESSION[$whoisplaying] == 21) {
-            echo 'BLACKJACK, dealer wins';
-
-        } else {
-            echo 'dealer score is' . $_SESSION[$whoisplaying] += $this->hit;;
-        }
     }
 
     //Surrender should make you surrender the game. (Dealer wins.)
@@ -74,3 +60,17 @@ class BlackJack{
     }
 
 }
+
+
+
+function whatIsHappening() {
+    echo '<h2>$_GET</h2>';
+    var_dump($_GET);
+    echo '<h2>$_POST</h2>';
+    var_dump($_POST);
+    echo '<h2>$_COOKIE</h2>';
+    var_dump($_COOKIE);
+    echo '<h2>$_SESSION</h2>';
+    var_dump($_SESSION);
+}
+echo whatIsHappening();
