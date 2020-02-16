@@ -23,19 +23,17 @@ require 'game.php';
         <!--button to initiate game-->
         <button type="submit" value="4" name="start">start game</button>
 
-        <p class="player"><?php if (isset($player)) {
-                echo $player->whoIsPlaying;
-            } ?></p>
+        <p class="player"><?php if (isset($player)) { echo $player->whoIsPlaying;} ?></p>
 
         <section class="cards">
         <p  class="card" id="card1"><?php if (isset($player)){ echo $player->card1;} ?></p>
         <p class="card" id="card2"><?php if (isset($player)){ echo $player->card2;} ?></p>
-            <p><?php  if (isset($player)){echo $player->blackjack; }?></p>
+        <p class ='card' id="card3"><?php if(isset($player)){ echo $player->hit;} ?></p>
+
+        <p><?php  if (isset($player)){echo 'your score is'.$_SESSION['player']; }?></p>
         </section>
 
-        <div class="score"><?php if(isset($theScore)){ echo $theScore;}?></div>
-
-        <p class ='card'>HIT<?php if(isset($theScore)){ echo $player->hit;} ?></p>
+         <div class="loser"><?php echo $player->loser; ?></div>
 
     </div>
     <button type='submit' name="hit" value="1" style="display:<?php  if (isset($player)){  echo $player->disable; }?> "  >HIT</button>
@@ -43,7 +41,7 @@ require 'game.php';
     <button type='submit' name="surrender" value="3" style="display:<?php  if (isset($player)){ echo $player->disable; }?>">SURRENDER</button>
 
     <div class="DealerGame">
-        <p class="player"><?php    ?></p>
+
         <p class dealer><?php   ?></p>
         <div class="score"> </div>
     </div>

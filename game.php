@@ -1,10 +1,11 @@
 <?php
 require('blackjack.php');
 
-//instantiate two objects
+//instantiate two objects, player and dealer, pass in parameter for the constructor
 $player = new BlackJack('player');
 $dealer = new BlackJack('dealer');
 
+//when you start game, invoke startGame method for player
 if (isset($_POST['start'])) {
     $player->startGame('player');
 } else {
@@ -14,98 +15,54 @@ if (isset($_POST['start'])) {
     $player->card1 = '';
     $player->score = '';
     $player->hit = 'start the game!';
+
 }
 
+//hit button, invoke hit method and check for score
 if (isset($_POST['hit'])) {
-    $player->hitPlayer('player');
+    $player->hit('player');
 
-    if ($player->score > 21) {
-        echo 'you lose';
+    if ($_SESSION['player'] > 21) {
+       echo  $player->loser = 'you lose';
         $player->disable = 'none';
-    } elseif ($player->score == 21) {
-        $player->blackjack = 'BLACKJACK';
+    } elseif ($_SESSION['player'] == 21) {
+       echo  $player->blackjack = 'BLACKJACK';
     }
-
 } else {
-    $player->hit = 'hit me!';
+    $player->hit = ' ';
 }
 
+//stand button, start game for dealer, use a while loop to automate process
 if (isset($_POST['stand'])) {
     $dealer->startGame('dealer');
-
-    if ($dealer->score > 21) {
-        echo '<br>Dealer Loses';
-    }
-    while ($dealer->score < 15) {
+    do{
         $dealer->stand('dealer');
-    }
+    }while($_SESSION['dealer'] < 21);
 
+    if ($_SESSION['dealer'] > 21) {
+        echo $dealer->loser = '<br> DEALER LOSES';
+        $dealer->disable = 'none';
+    } elseif ($_SESSION['dealer'] == 21) {
+        echo $dealer->blackjack = 'BLACKJACK';
+    } else {
+        $dealer->hit = ' ';
+    }
 }
 
+
+
+
+//surrender button, display loser text
 if (isset($_POST['surrender'])) {
-
-    $dealer->surrender();
-
-}
-/*require ('blackjack.php');
-session_start();
-
-
-
-// If there already is a session, 'load' it into the array.
-if (isset($_SESSION)) {
-    $player = new Blackjack('player');
-     $_SESSION['player'] =$player->score ;
-    $dealer = new BlackJack('dealer');
-    $_SESSION['dealer']=  $dealer->score;
-    // If there isn't, clear it and start anew with 2 'random cards'
+    $player->loser;
+}else{
+    $player->loser = '';
 }
 
 
 
 
-$loser = 'you lose.';
-if (isset($_POST['start'])) {
-    //instantiate two objects
 
-
-
-
-
-    if (isset($_POST['hit'])) {
-        $player->hit();
-        $_SESSION["scorePlayer"] = $player->score;
-        $playerScore = $_SESSION['scorePlayer'];
-        if ($player->score > 21) {
-            echo $loser;
-            $player->disable = "disabled";
-            session_destroy();
-        }elseif ($player->score == 21){
-            echo $player->blackjack;
-        }
-    }
-
-    if(isset($_POST['stand'])){
-        $dealer->startGame('dealer');
-    while($this->score < 21){
-            if ($this->score > 15) {
-            echo '<br> dealer score is:' . $this->score;
-            echo 'Dealer loses';
-            } elseif ($this->score == 21) {
-            echo 'BLACKJACK, dealer wins';
-
-            } else {
-            echo 'dealer score is' . $this->score += $this->hit;;
-            }
-        }
-    }
-
-    if(isset($_POST['surrender'])){
-
-        echo $dealer->surrender();
-
-    }
-}*/
 
 
 
